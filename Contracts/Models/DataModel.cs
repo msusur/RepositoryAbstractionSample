@@ -4,10 +4,12 @@ namespace Contracts.Models
 {
     public class DataModel
     {
-        public UserModel Owner { get; set; }
+        public virtual UserModel Owner { get; set; }
 
-        public string DataDescription { get; set; }
+        public virtual string DataDescription { get; set; }
 
-        public Guid Id { get; set; }
+        public virtual Guid Id { get; set; }
+
+        public virtual int OwnerId { get; set; }
     }
 }

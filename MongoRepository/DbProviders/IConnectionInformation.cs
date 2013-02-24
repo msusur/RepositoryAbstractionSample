@@ -1,4 +1,4 @@
-namespace RepositoryLibrary.DbProviders.MongoDb
+namespace RepositoryLibrary.DbProviders
 {
     public interface IConnectionInformation
     {

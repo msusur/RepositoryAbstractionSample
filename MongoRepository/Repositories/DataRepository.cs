@@ -2,14 +2,16 @@
 using System.Linq;
 using Contracts;
 using Contracts.Models;
-using RepositoryLibrary.Configuration;
-using RepositoryLibrary.DbProviders.MongoDb;
+using RepositoryLibrary.Configurations;
+using RepositoryLibrary.DbProviders;
+using RepositoryLibrary.DbProviders.NHibernateProvider;
 
 namespace RepositoryLibrary.Repositories
 {
-    public class ConcreteDataRepository : BaseRepository<MongoDbProvider>, IDataRepository
+    public class DataRepository<TProvider> : BaseRepository<TProvider>, IDataRepository
+        where TProvider : DbProviderBase
     {
-        public ConcreteDataRepository()
+        public DataRepository()
             : base(ConfigurationHelper.GetKey("ConnectionString:DataRepo"))
         {
         }

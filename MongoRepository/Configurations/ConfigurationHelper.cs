@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace RepositoryLibrary.Configuration
+namespace RepositoryLibrary.Configurations
 {
     public class ConfigurationHelper
     {
@@ -14,7 +14,7 @@ namespace RepositoryLibrary.Configuration
             return Dictionary[key];
         }
 
-        public static string SetKey(string key,string value)
+        public static void SetKey(string key,string value)
         {
             Dictionary[key] = value;
         }

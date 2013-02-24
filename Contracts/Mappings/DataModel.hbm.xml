@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Contracts"
+                   namespace="Contracts.Models">
+
+  <class name="DataModel" table="DataModel">
+    <id name="Id"  >
+      <generator class="guid" />
+    </id>
+    <property name="DataDescription" column="DataDescription" />
+    <many-to-one name="OwnerId" class="DataModel" column="Id" not-null="true" cascade="all" unique="true">
+
+    </many-to-one>
+  </class>
+
+  <class name="UserModel" table="UserModel">
+    <id name="Id">
+      <generator class="native" />
+    </id>
+    <property name="Name" />
+    <property name="Surname" />
+  </class>
+
+</hibernate-mapping>

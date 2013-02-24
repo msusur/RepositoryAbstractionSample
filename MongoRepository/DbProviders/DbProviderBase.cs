@@ -1,14 +1,13 @@
 using System.Linq;
-using Contracts;
 using RepositoryLibrary.DbProviders.Helpers;
 
-namespace RepositoryLibrary.DbProviders.MongoDb
+namespace RepositoryLibrary.DbProviders
 {
     public abstract class DbProviderBase : IDbProvider
     {
         protected IConnectionInformation ConnectionInfo { get; private set; }
 
-        public DbProviderBase(string connectionString)
+        protected DbProviderBase(string connectionString)
         {
             ConnectionInfo = ConnectionInformationSelector.Select(connectionString).Build();
         }
