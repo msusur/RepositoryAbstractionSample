@@ -1,6 +1,4 @@
-using System;
 using System.Linq;
-using Contracts;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 
@@ -10,7 +8,7 @@ namespace RepositoryLibrary.DbProviders.MongoDb
     {
         private readonly MongoServer _server;
         private readonly MongoDatabase _database;
-        
+        //private readonly IExpressionParser _parser = new MongoDbExpressionParser();
 
         public MongoDbProvider(string connectionString)
             : base(connectionString)
@@ -30,16 +28,17 @@ namespace RepositoryLibrary.DbProviders.MongoDb
             _database.GetCollection(typeof(TModel).Name).Save(model);
             return model;
         }
-        
+
         public override TModel Update<TModel>(TModel model)
         {
             _database.GetCollection(typeof(TModel).Name).Save(model);
             return model;
         }
-        
+
         public override void Delete<TModel>(TModel model)
         {
-
+            IMongoQuery query = MongoHelper.BuildQueryFrom(model);
+            _database.GetCollection(typeof(TModel).Name).Remove(query);
         }
     }
 }
